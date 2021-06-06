@@ -84,6 +84,7 @@ class DFS {
             }
         }
 
+        --this._callStackSize
         return false
     }
 }
