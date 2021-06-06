@@ -23,7 +23,7 @@ body {
 
 .ok {
     height: 350px;
-    background-image: url(img/ok.png);
+    background-image: url(ok.png);
     background-size: cover;
     background-position: 0;
 }
