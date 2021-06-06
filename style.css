@@ -6,6 +6,7 @@
 body {
     background-color: #eaeaea;
     font-family: arial, sans-serif;
+    text-align: center;
 }
 
 .container {
@@ -15,17 +16,27 @@ body {
     background-color: white;
 }
 
-.container h1 {
+.quiz {
     font-size: 40px;
-    text-align: center;
     margin-top: 10px; 
 }
 
-.ok {
-    height: 350px;
-    background-image: url(ok.png);
+.its {
+    width: 450px;
+    height: 400px;
+    background-image: url(its.png);
     background-size: cover;
     background-position: 0;
+    margin: 10px auto;
+}
+
+.team {
+    margin-top: 20px;
+    list-style: none;
+}
+
+.title {
+    margin-top: 50px;
 }
 
 .chessboard {
