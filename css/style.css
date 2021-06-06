@@ -24,7 +24,7 @@ body {
 .its {
     width: 450px;
     height: 400px;
-    background-image: url(its.png);
+    background-image: url(/assets/its.png);
     background-size: cover;
     background-position: 0;
     margin: 10px auto;
