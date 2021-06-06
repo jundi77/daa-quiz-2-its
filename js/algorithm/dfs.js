@@ -1,4 +1,4 @@
-class DFS {
+export default class DFS {
 
 
     /**
