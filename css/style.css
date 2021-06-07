@@ -56,11 +56,13 @@ body {
 .its {
   width: 550px;
   height: 500px;
-  background-image: url(/assets/its.png);
+  background-image: url(../assets/its.png);
   background-size: cover;
   background-position: 0;
   margin: 10px auto;
 }
+
+/*
 
 .chessboard {
   width: 580px;
@@ -91,6 +93,8 @@ body {
   vertical-align: middle;
 }
 
+*/
+
 button {
   margin: 10px 15px 0;
   padding: 10px 30px 10px;
@@ -100,10 +104,10 @@ button {
   cursor: pointer;
 }
 
-#start-btn {
+#startBtn {
   background-color: #007e33;
 }
 
-#solution-btn {
+#clearBtn {
   background-color: #0d47a1;
 }
