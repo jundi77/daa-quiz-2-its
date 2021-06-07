@@ -25,91 +25,19 @@
         </div>
 
         <div class="column right">
-            <div class="chessboard">
-                <!-- 1st -->
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white">&#9819;</div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <!-- 2nd -->
-                <div class="black"></div>
-                <div class="white">&#9819;</div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <!-- 3th -->
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black">&#9819;</div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <!-- 4st -->
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black">&#9819;</div>
-                <div class="white"></div>
-                <!-- 5th -->
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white">&#9819;</div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <!-- 6th -->
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white">&#9819;</div>
-                <!-- 7th -->
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black">&#9819;</div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <!-- 8th -->
-                <div class="black">&#9819;</div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-                <div class="black"></div>
-                <div class="white"></div>
-            </div>
-
-            <button id="start-btn">Start/Reset</button>
-            <button id="solution-btn">Solution</button>
+            
+            <div id="myBoard" style="width: 400px"></div>
+            <button id="startBtn">Start Position</button>
+            <button id="clearBtn">Clear Board</button>    
         </div>  
     </div>
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
     crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
     integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
     crossorigin="anonymous"></script>
+    <script src="/js/connector.js" type="module"></script>
 </body>
 </html>
