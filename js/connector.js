@@ -1,6 +1,9 @@
 import NQueenSolver from './NQueenSolver.js'
 
-// todo
+//pencet -> cek objek NQueenSolver (haveserach true/false) true =buat objek baru, else = msg gagal [true]-> 
+// todo saat tombol dipilih, koordinatLama -> koordinatBaru [freeze piece agar tidak bergerak], objek NQueenSolver (test) memanggil method (search)  -> setelah search objek akan menjadi NULL
+// harus dibuat objek baru lagi diakhri (pakai doneSearch)
+
 
 var config = {
     pieceTheme:"/assets/img/chesspieces/wikipedia/{piece}.png",
@@ -9,11 +12,6 @@ var config = {
     sparePieces: true
 }
 var myBoard = Chessboard('myBoard', config)
-
-// myBoard.config.
-
-// $('#startBtn').on('click', myBoard.start)
-// $('#clearBtn').on('click', myBoard.clear)
 
 let solverNode = {
     panjang: 5,
@@ -25,7 +23,7 @@ let test = new NQueenSolver(solverNode)
 
 document.querySelector('.board-b72b1').querySelectorAll('.piece-417db').forEach(el => {
     // console.log(el.parentNode.getAttribute('data-square'))
-    test.posisi_queen.push(el.parentNode.getAttribute('data-square'))
+    solverNode.posisi_queen.push(el.parentNode.getAttribute('data-square'))
   })
 
 window.test=solverNode
