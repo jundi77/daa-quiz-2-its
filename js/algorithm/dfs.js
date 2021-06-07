@@ -4,7 +4,7 @@ export default class DFS {
     /**
      * Constructor.
      * 
-     * @param {Array} maps 2D array
+     * @param {*} maps Any data structure available
      * @param {Function} getChildNodeFn Untuk mendapatkan child node dari parent
      * @param {Function} finishedNodeEvaluatorFn Untuk evaluasi jika node adalah node tujuan
      */
