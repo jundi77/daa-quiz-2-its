@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -10,10 +11,32 @@ body {
 }
 
 .container {
-  width: 900px;
-  margin: auto;
+  width: 90%;
+  margin: 20px auto;
   padding: 15px 30px 45px;
   background-color: white;
+  position: relative;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left {
+  width: 40%;
+  /*    background-color: red; */
+}
+
+.right {
+  width: 60%;
+  /*    background-color: gold;*/
+}
+
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .quiz {
@@ -21,13 +44,8 @@ body {
   margin-top: 10px;
 }
 
-.its {
-  width: 450px;
-  height: 400px;
-  background-image: url(/assets/its.png);
-  background-size: cover;
-  background-position: 0;
-  margin: 10px auto;
+.title {
+  margin-top: 10px;
 }
 
 .team {
@@ -35,33 +53,57 @@ body {
   list-style: none;
 }
 
-.title {
-  margin-top: 50px;
+.its {
+  width: 550px;
+  height: 500px;
+  background-image: url(its.png);
+  background-size: cover;
+  background-position: 0;
+  margin: 10px auto;
 }
 
 .chessboard {
-  width: 480px;
-  height: 480px;
-  margin: 20px auto;
-  border: 15px solid #333;
+  width: 580px;
+  height: 580px;
+  margin: 10px auto;
+  border: 10px solid #333;
 }
+
 .black {
   float: left;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   background-color: #8b4513;
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
 }
+
 .white {
   float: left;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   background-color: white;
-  font-size: 40px;
+  font-size: 50px;
   text-align: center;
   display: table-cell;
   vertical-align: middle;
+}
+
+button {
+  margin: 10px 15px 0;
+  padding: 10px 30px 10px;
+  color: white;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+#start-btn {
+  background-color: #007e33;
+}
+
+#solution-btn {
+  background-color: #0d47a1;
 }
