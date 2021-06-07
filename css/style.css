@@ -1,36 +1,36 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #eaeaea;
-    font-family: arial, sans-serif;
-    text-align: center;
+  background-color: #eaeaea;
+  font-family: arial, sans-serif;
+  text-align: center;
 }
 
 .container {
-    width: 90%;
-    margin: 20px auto;
-    padding: 15px 30px 45px;
-    background-color: white;
-    position: relative;
+  width: 90%;
+  margin: 20px auto;
+  padding: 15px 30px 45px;
+  background-color: white;
+  position: relative;
 }
 
 .column {
-    float: left;
-    padding: 10px;
+  float: left;
+  padding: 10px;
 }
 
 .left {
-    width: 40%;
-/*    background-color: red; */
+  width: 40%;
+  /*    background-color: red; */
 }
 
 .right {
-    width: 60%;
-/*    background-color: gold;*/
+  width: 60%;
+  /*    background-color: gold;*/
 }
 
 .container:after {
@@ -40,70 +40,70 @@ body {
 }
 
 .quiz {
-    font-size: 40px;
-    margin-top: 10px; 
+  font-size: 40px;
+  margin-top: 10px;
 }
 
 .title {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .team {
-    margin-top: 20px;
-    list-style: none;
+  margin-top: 20px;
+  list-style: none;
 }
 
 .its {
-    width: 550px;
-    height: 500px;
-    background-image: url(its.png);
-    background-size: cover;
-    background-position: 0;
-    margin: 10px auto;
+  width: 550px;
+  height: 500px;
+  background-image: url(/assets/its.png);
+  background-size: cover;
+  background-position: 0;
+  margin: 10px auto;
 }
 
 .chessboard {
-    width: 580px;
-    height: 580px;
-    margin: 10px auto;
-    border: 10px solid #333;
+  width: 580px;
+  height: 580px;
+  margin: 10px auto;
+  border: 10px solid #333;
 }
 
 .black {
-    float: left;
-    width: 70px;
-    height: 70px;
-    background-color: #8B4513;
-    font-size:50px;
-    text-align:center;
-    display: table-cell;
-    vertical-align:middle;
+  float: left;
+  width: 70px;
+  height: 70px;
+  background-color: #8b4513;
+  font-size: 50px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .white {
-    float: left;
-    width: 70px;
-    height: 70px;
-    background-color: white;
-    font-size:50px;
-    text-align:center;
-    display: table-cell;
-    vertical-align:middle;
+  float: left;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  font-size: 50px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 button {
-    margin: 10px 15px 0; 
-    padding: 10px 30px 10px;
-    color: white;
-    font-size: 25px;
-    border: none;
-    cursor: pointer;
+  margin: 10px 15px 0;
+  padding: 10px 30px 10px;
+  color: white;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
 }
 
 #start-btn {
-    background-color: #007E33;
+  background-color: #007e33;
 }
 
 #solution-btn {
-    background-color: #0d47a1;
+  background-color: #0d47a1;
 }
