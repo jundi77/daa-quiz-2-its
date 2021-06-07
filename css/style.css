@@ -10,12 +10,11 @@ body {
   text-align: center;
 }
 
-.container {
+.content {
   width: 90%;
   margin: 20px auto;
   padding: 15px 30px 45px;
   background-color: white;
-  position: relative;
 }
 
 .column {
@@ -25,18 +24,16 @@ body {
 
 .left {
   width: 40%;
-  /*    background-color: red; */
+  /*background-color: red;*/ 
 }
 
 .right {
   width: 60%;
-  /*    background-color: gold;*/
+  /*background-color: gold;*/
 }
 
-.container:after {
-  content: "";
-  display: table;
-  clear: both;
+.clear {
+  clear: left;
 }
 
 .quiz {
@@ -44,7 +41,8 @@ body {
   margin-top: 10px;
 }
 
-.title {
+ .title {
+  font-size: 30px;
   margin-top: 10px;
 }
 
@@ -54,46 +52,13 @@ body {
 }
 
 .its {
-  width: 550px;
-  height: 500px;
+  width: 500px;
+  height: 450px;
   background-image: url(../assets/its.png);
   background-size: cover;
   background-position: 0;
   margin: 10px auto;
 }
-
-/*
-
-.chessboard {
-  width: 580px;
-  height: 580px;
-  margin: 10px auto;
-  border: 10px solid #333;
-}
-
-.black {
-  float: left;
-  width: 70px;
-  height: 70px;
-  background-color: #8b4513;
-  font-size: 50px;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.white {
-  float: left;
-  width: 70px;
-  height: 70px;
-  background-color: white;
-  font-size: 50px;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-*/
 
 button {
   margin: 10px 15px 0;
