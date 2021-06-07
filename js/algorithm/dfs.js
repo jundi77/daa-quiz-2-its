@@ -78,7 +78,7 @@ export default class DFS {
 
         it = 0
         while((childNode = this._getChildNodeFn(node, it++)) !== false) {
-            if (await this._search(childNode, getChildNodeFn, finishedNodeEvaluatorFn)) {
+            if (await this._search(childNode)) {
                 --this._callStackSize
                 return true
             }
