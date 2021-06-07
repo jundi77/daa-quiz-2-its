@@ -3,13 +3,36 @@
  */
 
 import NQueenSolver from './NQueenSolver.js'
-let test = new NQueenSolver([[]]); // !remember selalu array 2D
+let test = new NQueenSolver({
+    panjang: 5,
+    lebar: 5,
+    posisi_queen: [
+        [0,0],
+        [1,1]
+        // ...
+    ]
+})
+
+errorCallback(err) {
+    alert(err.message)
+}
+
+successCallback(node) {
+    alert(JSON.stringify(node))
+}
+
+failedCallback() {
+    alert("Algo fail")
+}
+
+test.search(errorCallback, failedCallback, successCallback) // contoh cara panggil, fungsi ini async
+test.stop() // contoh cara stop
 
 /**
  * Available methods:
  * 
  * - constructor (ofcourse :) )
- * - search
+ * - search (async)
  * - stop
  * - getFinishedNode
  * 
