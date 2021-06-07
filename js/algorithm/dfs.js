@@ -5,18 +5,15 @@ export default class DFS {
      * Constructor.
      * 
      * @param {*} maps Any data structure available
-     * @param {Function} getChildNodeFn Untuk mendapatkan child node dari parent
-     * @param {Function} finishedNodeEvaluatorFn Untuk evaluasi jika node adalah node tujuan
      */
-    constructor(maps, getChildNodeFn, finishedNodeEvaluatorFn) {
+    constructor(maps) {
         this._maps = maps
-        this._finishStateEvaluatorFn = finishedNodeEvaluatorFn
-        this._getChildNodeFn = getChildNodeFn
         this._callStackSize = 0
         this._haveSearched = false
         this._haveDoneSearched = false
         this._stopSearch = false
         this._finishedNode = []
+        this._visitedNode = {}
     }
 
     /**
@@ -24,14 +21,19 @@ export default class DFS {
      * 
      * @returns bool
      */
-    search() {
+    async search(errCallback, successCallback) {
         if (!this._haveSearched) {
             this._haveSearched = true
             this._search(this._maps, this._getChildNodeFn, this._finishStateEvaluatorFn)
-            return true
+                .catch(err => errCallback(err))
+                .then(successVal => successCallback(successVal))
+            return
         }
 
-        return false
+        /**
+         * Dianggap gagal karena sedang/sudah mencari
+         */
+        errCallback(new Error("Telah mencari. Untuk melakukan pencarian ulang, instansiasi kelas kembali."))
     }
 
     /**
@@ -74,11 +76,13 @@ export default class DFS {
             return true
         }
 
+        let nodeStr = JSON.stringify(node)
+        this._visitedNode[nodeStr] = true
+        
         ++this._callStackSize
-
         it = 0
         while((childNode = this._getChildNodeFn(node, it++)) !== false) {
-            if (await this._search(childNode)) {
+            if (!this._visitedNode[nodeStr] && await this._search(childNode)) {
                 --this._callStackSize
                 return true
             }
@@ -87,4 +91,18 @@ export default class DFS {
         --this._callStackSize
         return false
     }
+
+    /**
+     * Abstrak method, ini untuk mendapatkan child node dari parent
+     * @param {*} node 
+     * @param {*} id 
+     */
+    _getChildNodeFn(node, id) {throw new Error("Method belum diimplementasikan.")}
+
+    /**
+     * Abstrak method, untuk evaluasi jika node adalah node tujuan
+     * 
+     * @param {*} node 
+     */
+    _finishStateEvaluatorFn(node) {throw new Error("Method belum diimplementasikan.")}
 }
