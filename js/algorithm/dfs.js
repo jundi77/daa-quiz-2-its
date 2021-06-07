@@ -12,7 +12,7 @@ export default class DFS {
         this._haveSearched = false
         this._haveDoneSearched = false
         this._stopSearch = false
-        this._finishedNode = []
+        this._finishedNode = null
         this._visitedNode = {}
     }
 
@@ -21,12 +21,18 @@ export default class DFS {
      * 
      * @returns bool
      */
-    async search(errCallback, successCallback) {
+    async search(errCallback, failedCallback, successCallback) {
         if (!this._haveSearched) {
             this._haveSearched = true
             this._search(this._maps, this._getChildNodeFn, this._finishStateEvaluatorFn)
                 .catch(err => errCallback(err))
-                .then(successVal => successCallback(successVal))
+                .then(successVal => {
+                    if (this._finishedNode) {
+                        successCallback(this._finishedNode)
+                    } else {
+                        failedCallback()
+                    }
+                })
             return
         }
 
@@ -67,7 +73,7 @@ export default class DFS {
      */
     async _search(node) {        
         if (this._stopSearch) {
-            return true
+            throw new Error("Pencarian diberhentikan.")
         }
         
         if (this._finishedNodeEvaluatorFn(node)) {
