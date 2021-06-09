@@ -8,6 +8,7 @@ export default class DFS {
      */
     constructor(maps) {
         this._maps = maps
+        this._classDir = '/js/algorithm/dfs.js'
         this._callStackSize = 0
         this._haveSearched = false
         this._haveDoneSearched = false
@@ -76,7 +77,7 @@ export default class DFS {
             throw new Error("Pencarian diberhentikan.")
         }
         
-        if (this._finishStateEvaluatorFn(node)) {
+        if (this.constructor._finishStateEvaluatorFn(node)) {
             this._finishedNode = node
             this._haveDoneSearched = true
             return true
@@ -87,7 +88,7 @@ export default class DFS {
         
         ++this._callStackSize
         let it = 0, childNode
-        while((childNode = this._getChildNodeFn(node, it++)) !== false) {
+        while((childNode = this.constructor._getChildNodeFn(node, it++)) !== false) {
             let childNodeStr = JSON.stringify(childNode)
             if (!this._visitedNode[childNodeStr] && await this._search(childNode)) {
                 --this._callStackSize
@@ -104,12 +105,12 @@ export default class DFS {
      * @param {*} node 
      * @param {Number} id 
      */
-    _getChildNodeFn(node, id) {throw new Error("Method belum diimplementasikan.")}
+    static _getChildNodeFn(node, id) {throw new Error("Method belum diimplementasikan.")}
 
     /**
      * Abstrak method, untuk evaluasi jika node adalah node tujuan
      * 
      * @param {*} node 
      */
-    _finishStateEvaluatorFn(node) {throw new Error("Method belum diimplementasikan.")}
+    static _finishStateEvaluatorFn(node) {throw new Error("Method belum diimplementasikan.")}
 }
