@@ -13,15 +13,15 @@ let test = new NQueenSolver({
     ]
 })
 
-errorCallback(err) {
+function errorCallback(err) {
     alert(err.message)
 }
 
-successCallback(node) {
+function successCallback(node) {
     alert(JSON.stringify(node))
 }
 
-failedCallback() {
+function failedCallback() {
     alert("Algo fail")
 }
 
