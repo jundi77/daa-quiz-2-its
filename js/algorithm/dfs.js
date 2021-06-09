@@ -24,7 +24,7 @@ export default class DFS {
     async search(errCallback, failedCallback, successCallback) {
         if (!this._haveSearched) {
             this._haveSearched = true
-            this._search(this._maps, this._getChildNodeFn, this._finishStateEvaluatorFn)
+            this._search(this._maps)
                 .catch(err => errCallback(err))
                 .then(successVal => {
                     if (this._finishedNode) {
@@ -71,12 +71,12 @@ export default class DFS {
      * @param {Array} node 
      * @returns bool
      */
-    async _search(node) {        
+    async _search(node) {
         if (this._stopSearch) {
             throw new Error("Pencarian diberhentikan.")
         }
         
-        if (this._finishedNodeEvaluatorFn(node)) {
+        if (this._finishStateEvaluatorFn(node)) {
             this._finishedNode = node
             this._haveDoneSearched = true
             return true
@@ -86,9 +86,10 @@ export default class DFS {
         this._visitedNode[nodeStr] = true
         
         ++this._callStackSize
-        it = 0
+        let it = 0, childNode
         while((childNode = this._getChildNodeFn(node, it++)) !== false) {
-            if (!this._visitedNode[nodeStr] && await this._search(childNode)) {
+            let childNodeStr = JSON.stringify(childNode)
+            if (!this._visitedNode[childNodeStr] && await this._search(childNode)) {
                 --this._callStackSize
                 return true
             }
@@ -101,7 +102,7 @@ export default class DFS {
     /**
      * Abstrak method, ini untuk mendapatkan child node dari parent
      * @param {*} node 
-     * @param {*} id 
+     * @param {Number} id 
      */
     _getChildNodeFn(node, id) {throw new Error("Method belum diimplementasikan.")}
 

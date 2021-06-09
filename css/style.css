@@ -15,6 +15,16 @@ body {
   text-align: center;
 }
 
+.container {
+/*  background-color: salmon;*/
+  margin-top: 20px;
+}
+
+.toast {
+  position: relative;
+  margin: 0 auto;
+}
+
 .content {
   width: 90%;
   margin: 20px auto;
