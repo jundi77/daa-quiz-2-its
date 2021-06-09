@@ -13,11 +13,27 @@ var config = {
     pieceTheme:"/assets/img/chesspieces/wikipedia/{piece}.png",
     draggable: true,
     dropOffBoard: 'trash',
+    orientation: 'black',
     sparePieces: true
 }
 
 var myBoard = Chessboard('myBoard', config)
 let inputChess = new NQueenSolver(solverNode)
+
+// To only show the black pieces
+var pieces = document.getElementsByClassName("spare-pieces-7492f")
+pieces[0].style.visibility="hidden"
+pieces[1].style.paddingRight="5px"
+
+// Wildcard to only show one queen pieces
+var pieceColor = ["[id^=bK-]","[id^=bQ-]","[id^=bP-]","[id^=bB-]","[id^=bN-]"]
+var test 
+
+pieceColor.forEach(function(item){
+    test = $(item)
+    test[0].style.visibility="hidden"
+}
+)
 
 function errorCallback(err) {
     alert(err.message)
@@ -48,7 +64,7 @@ function reStart(){
 }
 
 startBtn.onclick = function(){
-    
+    console.log(test)
     document.getElementById("clearBtn").style.visibility = "hidden";
 
     if(lockBoard.className == ""){
