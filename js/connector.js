@@ -1,13 +1,5 @@
 import NQueenSolver from './NQueenSolver.js'
 
-/*
-New changes at connector.js
-at connector.js:
-    - Hide clearBtn when doing algo
-    - Change if(startBtn.class(Freeze)) -> else if(...)
-    - setMove & getMove, search animation, called by dfs during DFSearch
-*/ 
-
 var startBtn = document.getElementById("startBtn");
 var lockBoard = document.getElementById("lockBoard");
 
@@ -25,7 +17,6 @@ var config = {
 }
 
 var myBoard = Chessboard('myBoard', config)
-
 let inputChess = new NQueenSolver(solverNode)
 
 function errorCallback(err) {
@@ -43,23 +34,13 @@ function failedCallback() {
     reStart()
 }
 
-//getMove dipanggil oleh dfs untuk menganimasikan DFSearch
-
-function getMove(oldCoor,newCoor){
-    oldCoor = setMove(oldCoor)
-    newCoor = setMove(newCoor)
-    myBoard.move(oldCoor+'-'+newCoor)
-}
-
-function setMove(coor){
-    return String.fromCharCode(97 + coor[0]).concat((8 - coor[1]).toString());
-}
-
+document.getElementsByClassName
 function getKoor(item,index){
     solverNode.posisi_queen[index] = [(item.charCodeAt(0)) % 97,(8 % parseInt(item.charAt(1)))];
 }
 
 function reStart(){
+    myBoard.clear();
     lockBoard.className = ""
     startBtn.innerHTML = "Start Position";
     inputChess = new NQueenSolver(solverNode);
@@ -67,7 +48,7 @@ function reStart(){
 }
 
 startBtn.onclick = function(){
-
+    
     document.getElementById("clearBtn").style.visibility = "hidden";
 
     if(lockBoard.className == ""){

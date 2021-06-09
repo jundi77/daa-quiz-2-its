@@ -79,6 +79,12 @@ button {
   cursor: pointer;
 }
 
+#myBoard {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #lockBoard {
   position: absolute;
   width: 400px;
@@ -99,7 +105,9 @@ button {
   background: #ffffff;
   top: 1; /*! display: none; */
   opacity: 0%;
-
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
   height: 494px;
 }
 
