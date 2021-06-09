@@ -1,17 +1,11 @@
 import NQueenSolver from './NQueenSolver.js'
 
 /*
-New fucntion at connector.js and new style class at sytle.css
-
-at style.css:
-    - Add style and class for id="lockBoard", to freeze cheespiece.
+New changes at connector.js
 at connector.js:
-    - Add fungsi getKoor() guna konversi koordinat.
-    - Add Event handing button Start.
-    - Add fungsi callBack(s)
-    - Add Event btnClear (clean board)
-    - Add startBtn "Start Position" -> "Stop"
-    - Add function restart to callBack(s) to reset state
+    - Hide clearBtn when doing algo
+    - Change if(startBtn.class(Freeze)) -> else if(...)
+    - setMove & getMove, search animation, called by dfs during DFSearch
 */ 
 
 var startBtn = document.getElementById("startBtn");
@@ -49,6 +43,18 @@ function failedCallback() {
     reStart()
 }
 
+//getMove dipanggil oleh dfs untuk menganimasikan DFSearch
+
+function getMove(oldCoor,newCoor){
+    oldCoor = setMove(oldCoor)
+    newCoor = setMove(newCoor)
+    myBoard.move(oldCoor+'-'+newCoor)
+}
+
+function setMove(coor){
+    return String.fromCharCode(97 + coor[0]).concat((8 - coor[1]).toString());
+}
+
 function getKoor(item,index){
     solverNode.posisi_queen[index] = [(item.charCodeAt(0)) % 97,(8 % parseInt(item.charAt(1)))];
 }
@@ -57,10 +63,13 @@ function reStart(){
     lockBoard.className = ""
     startBtn.innerHTML = "Start Position";
     inputChess = new NQueenSolver(solverNode);
+    document.getElementById("clearBtn").style.visibility = "visible";
 }
 
 startBtn.onclick = function(){
-    
+
+    document.getElementById("clearBtn").style.visibility = "hidden";
+
     if(lockBoard.className == ""){
         lockBoard.className = "Freeze";
         startBtn.innerHTML = "Stop";   
@@ -75,14 +84,15 @@ startBtn.onclick = function(){
     
             window.inputChess=solverNode;
             
-            inputChess.search(errorCallback, failedCallback, successCallback);
+            // inputChess.search(errorCallback, failedCallback, successCallback);
     
         }
     }
-    //if the algo took longertime to finish
-    if(lockBoard.className == "Freeze"){
+    //else if the algo took longertime to finish
+    else if(lockBoard.className == "Freeze"){
         inputChess.stop();
         inputChess = new NQueenSolver(solverNode);
+        reStart();
     }    
 };
 

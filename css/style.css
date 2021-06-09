@@ -1,8 +1,3 @@
-/*
-new:
-- css for id="lockBoard", freeze cheespiece.
-*/
-
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +11,7 @@ body {
 }
 
 .container {
-/*  background-color: salmon;*/
+  /*  background-color: salmon;*/
   margin-top: 20px;
 }
 
