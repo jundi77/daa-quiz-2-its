@@ -1,7 +1,7 @@
 import NQueenSolver from './NQueenSolver.js'
 /*
 Modification at connector.js:
-    - resolve output for success
+    - resolve significan value for run time
 */
 var timeStart;
 var timeStop;
@@ -58,23 +58,23 @@ function onDrop(piece,target,newPos, oldPos){
 }
 
 function errorCallback(err) {
-    timeStop = Math.floor(Date.now() / 1000);
-    alert(err.message+ " at "+ (timeStop-timeStart)+" detik")
+    timeStop = (Date.now() / 1000);
+    alert(err.message+ " saat "+ (timeStop-timeStart).toFixed(2)+" detik")
     reStart()
 }
 
 function successCallback(node) {
-    timeStop = Math.floor(Date.now() / 1000);
+    timeStop = (Date.now() / 1000);
     reStart()
     console.log(node.posisi_queen)
     node.posisi_queen = setMove(...node.posisi_queen)
     myBoard.position(node.posisi_queen)
-    alert("Berhasil dalam "+ (timeStop-timeStart)+" detik")
+    alert("Berhasil dalam "+ (timeStop-timeStart).toFixed(2)+" detik")
 }
 
 function failedCallback() {
-    timeStop = Math.floor(Date.now() / 1000);
-    alert("Algoritma gagal saat "+ (timeStop-timeStart)+" detik")
+    timeStop = (Date.now() / 1000);
+    alert("Algoritma gagal saat "+ (timeStop-timeStart).toFixed(2)+" detik")
     reStart()
 }
 
@@ -129,7 +129,7 @@ function reStart(){
 
 startBtn.onclick = function(){
 
-    timeStart = Math.floor(Date.now() / 1000);
+    
 
     // uncoment bellow & "var sg" to "how to use setMove()""
     // sg = setMove(...sg)
@@ -138,7 +138,7 @@ startBtn.onclick = function(){
     document.getElementById("clearBtn").style.visibility = "hidden";
 
     if(lockBoard.className == ""){
-
+        timeStart = (Date.now() / 1000);
         lockBoard.className = "Freeze";
         startBtn.innerHTML = "Stop";   
 
@@ -159,12 +159,13 @@ startBtn.onclick = function(){
     }
     //else if the algo took longertime to finish
     else if(lockBoard.className == "Freeze"){
-        timeStop = Math.floor(Date.now() / 1000);
+        timeStop = (Date.now() / 1000);
         inputChess.stop();
         inputChess = new NQueenSolver(solverNode);
         reStart();
-        alert("Algoritma dihentikan saat "+ (timeStop-timeStart)+" detik")
+        alert("Algoritma dihentikan saat "+ (timeStop-timeStart).toFixed(2)+" detik")
     }  
+    
 };
 
 clearBtn.onclick = function(){
