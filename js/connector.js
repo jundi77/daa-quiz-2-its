@@ -1,7 +1,7 @@
 import NQueenSolver from './NQueenSolver.js'
 /*
 Modification at connector.js:
-    - fixed coordinate + fixed FEN positioning for result
+    - resolve output for success
 */
 var timeStart;
 var timeStop;
@@ -59,21 +59,22 @@ function onDrop(piece,target,newPos, oldPos){
 
 function errorCallback(err) {
     timeStop = Math.floor(Date.now() / 1000);
-    alert(err.message+ " at "+ (timeStop-timeStart)+"sec")
+    alert(err.message+ " at "+ (timeStop-timeStart)+" detik")
     reStart()
 }
 
 function successCallback(node) {
     timeStop = Math.floor(Date.now() / 1000);
     reStart()
+    console.log(node.posisi_queen)
     node.posisi_queen = setMove(...node.posisi_queen)
     myBoard.position(node.posisi_queen)
-    alert(JSON.stringify(node)+" for "+ (timeStop-timeStart)+"sec")
+    alert("Berhasil dalam "+ (timeStop-timeStart)+" detik")
 }
 
 function failedCallback() {
     timeStop = Math.floor(Date.now() / 1000);
-    alert("Algo fail, running for "+ (timeStop-timeStart)+"sec")
+    alert("Algoritma gagal saat "+ (timeStop-timeStart)+" detik")
     reStart()
 }
 
@@ -85,17 +86,17 @@ function setMove(...item){
         item[i] = item[i].join('')
         y = parseInt(item[i].charAt(1))
         if(item[i].charAt(0)=='0'){
-            item[i]="n"
-            item[i]=item[i].concat("7")
+            item[i]="7"
+            item[i]=item[i].concat("n")
         }else if(item[i].charAt(0)!='0'&&item[i].charAt(0)!='7'){
-            item[i]=item[i].charAt(0)
+            item[i]=(7-parseInt(item[i].charAt(0))).toString()
             item[i]=item[i].concat("n")
             item[i]=item[i].concat((7-parseInt(item[i].charAt(0))).toString())
         }else{
-            item[i]="7"
-            item[i]=item[i].concat("n")
+            item[i]="n"
+            item[i]=item[i].concat("7")
         }
-        mv[y] = item[i]
+        mv[7-y] = item[i]
     }
     for(i = 0;i<8;i++){
         if(mv[i]!=null){
@@ -162,7 +163,7 @@ startBtn.onclick = function(){
         inputChess.stop();
         inputChess = new NQueenSolver(solverNode);
         reStart();
-        alert("Algorithm Timeout "+ (timeStop-timeStart)+"sec")
+        alert("Algoritma dihentikan saat "+ (timeStop-timeStart)+" detik")
     }  
 };
 
