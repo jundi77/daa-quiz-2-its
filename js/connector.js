@@ -1,8 +1,7 @@
 import NQueenSolver from './NQueenSolver.js'
 /*
-New at connector.js:
-    - setMove, to get string position
-    - at succesCallBack added step for conversion (node) & showing result to the myBoard
+Modification setMove() at connector.js:
+    - molulasi fungsi setMove(), menerima array, return string posisi
 */
 var startBtn = document.getElementById("startBtn");
 var lockBoard = document.getElementById("lockBoard");
@@ -47,14 +46,8 @@ function errorCallback(err) {
 function successCallback(node) {
     alert(JSON.stringify(node))
     reStart()
-    
-    node.posisi_queen = node.posisi_queen.forEach(function(item,index){
-        node.posisi_queen[index] = item.join('')
-        node.posisi_queen[index] = setMove(node.posisi_queen[index])
-    })
-    node.posisi_queen = node.posisi_queen.join('/')
-
-    myBoard.position(uji)
+    node.posisi_queen = setMove(...node.posisi_queen)
+    myBoard.position(node.posisi_queen)
 }
 
 function failedCallback() {
@@ -62,19 +55,30 @@ function failedCallback() {
     reStart()
 }
 
-function setMove(item){
-    if(item.charAt(1)=='0'){
-        item="n"// cat N
-        item=item.concat("7")// cat 7
-    }else if(item.charAt(1)=='0'||item.charAt(1)=='7'){
-        item=item.charAt(1)
-        item=item.concat("N")// cat N
-        item=item.concat((7-parseInt(item.charAt(1))).toString())
-    }else{
-        item="7"// cat 7
-        item=item.concat("n")// cat N
+function setMove(...item){
+    var mv = []
+    var y
+
+    for(var i=0;i<item.length;i++){
+        item[i] = item[i].join('')
+        y = parseInt(item[i].charAt(1))
+        if(item[i].charAt(0)=='0'){
+            item[i]="n"
+            item[i]=item[i].concat("7")
+        }else if(item[i].charAt(0)!='0'&&item[i].charAt(0)!='7'){
+            item[i]=item[i].charAt(0)
+            item[i]=item[i].concat("n")
+            item[i]=item[i].concat((7-parseInt(item[i].charAt(0))).toString())
+        }else{
+            item[i]="7"
+            item[i]=item[i].concat("n")
+        }
+        mv[y] = item[i]
     }
-    return item
+
+    mv = mv.join('/')
+
+    return mv
 }
 
 function getKoor(item,index){
@@ -89,8 +93,13 @@ function reStart(){
     document.getElementById("clearBtn").style.visibility = "visible";
 }
 
+// var sg = [[0,6],[1,4],[2,2],[3,0],[4,5],[5,7],[6,1],[7,3]]
+
 startBtn.onclick = function(){
-     document.getElementById("clearBtn").style.visibility = "hidden";
+    // sg = setMove(...sg)
+    // myBoard.position(sg)  
+
+    document.getElementById("clearBtn").style.visibility = "hidden";
 
     if(lockBoard.className == ""){
         lockBoard.className = "Freeze";
@@ -115,7 +124,7 @@ startBtn.onclick = function(){
         inputChess.stop();
         inputChess = new NQueenSolver(solverNode);
         reStart();
-    }    
+    }  
 };
 
 $('#clearBtn').on('click', myBoard.clear)
