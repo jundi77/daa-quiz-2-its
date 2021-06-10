@@ -1,4 +1,4 @@
-# N Queens - DFS
+<h1 align="center">N Queens - DFS</h1>
 
 ## Demo App
 
@@ -13,10 +13,10 @@ This project was completed as a collaboration between:
 * **Jundullah Hanif Robbani** - 05111940000144
 
 ## Disclaimer
-This project was created to fulfill Quiz 2 assignment for Design and Analisys Algorithm course.
+This project was created to fulfill Quiz 2 assignment for Design and Analysis Algorithm course.
 
 ## Overview
-The N-Queens problem is a problem of placing N queen pieces in a chessboard size N x N so that no queens overlap each other attack, i.e. no two queen pieces are lies in one row, one column, and one the same diagonal. In this project, we use depth-first search (DFS) algorithm to find solutions to the N-Queens problem.
+The N-Queens problem is a problem of placing N queen pieces in a chessboard size N x N so that no queens overlap each other attack, i.e. no two queen pieces are lies in one row, one column, and one the same diagonal. In this project, we use depth-first search (DFS) algorithm to find solutions to the N-Queens problem. The algorithm starts by placing the fisrt queens anywhere arbitrarily and then place the next queen in any of the safe places. Then continue this process until the number of unplaced queens becomes zero (a solution is found) or no safe place is left. If no safe place is left, then we change the position of the previously placed queen.
 
 ## Technologies
 The technologies used to complete this project were:
