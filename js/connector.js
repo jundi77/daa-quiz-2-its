@@ -1,7 +1,7 @@
 import NQueenSolver from './NQueenSolver.js'
 /*
-Modification setMove() at connector.js:
-    - molulasi fungsi setMove(), menerima array, return string posisi
+Modification at connector.js:
+    - callBack(s) give alert() as result
 */
 var startBtn = document.getElementById("startBtn");
 var lockBoard = document.getElementById("lockBoard");
@@ -44,10 +44,10 @@ function errorCallback(err) {
 }
 
 function successCallback(node) {
-    alert(JSON.stringify(node))
     reStart()
     node.posisi_queen = setMove(...node.posisi_queen)
     myBoard.position(node.posisi_queen)
+    alert(JSON.stringify(node))
 }
 
 function failedCallback() {
@@ -96,6 +96,8 @@ function reStart(){
 // var sg = [[0,6],[1,4],[2,2],[3,0],[4,5],[5,7],[6,1],[7,3]]
 
 startBtn.onclick = function(){
+
+    // uncoment bellow & "var sg" to "how to use setMove()""
     // sg = setMove(...sg)
     // myBoard.position(sg)  
 
@@ -115,7 +117,7 @@ startBtn.onclick = function(){
     
             window.inputChess=solverNode;
             
-            // inputChess.search(errorCallback, failedCallback, successCallback);
+            inputChess.search(errorCallback, failedCallback, successCallback);
     
         }
     }
