@@ -24,7 +24,7 @@ This project was created to fulfill Quiz 2 assignment for Design and Analysis Al
 
 ## Overview
 
-The N-Queens problem is a problem of placing N queen pieces in a chessboard size N x N so that no queens overlap each other attack, i.e. no two queen pieces are lies in one row, one column, and one the same diagonal. In this project, we modified the problem a little bit. The number of queens can be 1-8, the user can place the first queens anywhere on the chessboard, while the chessboard's size is locked at 8x8. We use depth-first search (DFS) algorithm to find solutions to the N-Queens problem. The algorithm starts by moving the first queens, and then moving the next queen, until all queen is in any of the safe places. If no safe place is left, then we backtrack to move the position of the placed queen.
+The N-Queens problem is a problem of placing N queen pieces in a chessboard size N x N so that no queens overlap each other attack, i.e. no two queen pieces are lies in one row, one column, and one the same diagonal. In this project, we modified the problem a little bit. The number of queens can be 1-8, the user can place the first queens anywhere on the chessboard, while the chessboard's size is locked at 8x8. We use depth-first search (DFS) algorithm to find solutions to the N-Queens problem. The algorithm starts by moving the first queens, and then recursively moving the next queen, until all queen is in any of the safe places. If no safe place is left, then we backtrack to move the position of the placed queen.
 
 ## Technologies
 
