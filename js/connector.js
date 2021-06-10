@@ -1,17 +1,20 @@
 import NQueenSolver from './NQueenSolver.js'
 /*
 Modification at connector.js:
-    - at timer in sec for algo speed
+    - fixed coordinate + fixed FEN positioning for result
 */
 var timeStart;
 var timeStop;
 
+var pieceCount = 0;
+
 var startBtn = document.getElementById("startBtn");
+var clearBtn = document.getElementById("clearBtn");
 var lockBoard = document.getElementById("lockBoard");
 
 let solverNode = {
-    panjang: 5,
-    lebar: 5,
+    panjang: 8,
+    lebar: 8,
     posisi_queen: []
 }
 
@@ -20,7 +23,8 @@ var config = {
     draggable: true,
     dropOffBoard: 'trash',
     orientation: 'black',
-    sparePieces: true
+    sparePieces: true,
+    onDrop: onDrop
 }
 
 var myBoard = Chessboard('myBoard', config)
@@ -40,6 +44,18 @@ pieceColor.forEach(function(item){
     test[0].style.visibility="hidden"
 }
 )
+
+// querySelectorAll('row-5722c')[].querySelectorAll('square-55d63')[]//dapat area yang bisa diinjeksi
+
+function onDrop(piece,target,newPos, oldPos){
+    if(target != "offboard" && newPos == oldPos){
+        pieceCount+=1;
+        console.log("ok")
+    }
+    if(pieceCount == 8){
+        $("[id^=bR-]")[0].style.visibility="hidden"
+    }
+}
 
 function errorCallback(err) {
     timeStop = Math.floor(Date.now() / 1000);
@@ -81,21 +97,30 @@ function setMove(...item){
         }
         mv[y] = item[i]
     }
-
+    for(i = 0;i<8;i++){
+        if(mv[i]!=null){
+            continue
+        }else{
+            mv[i]='8'
+        }
+    }
     mv = mv.join('/')
+    console.log(mv)
 
     return mv
 }
 
 function getKoor(item,index){
-    solverNode.posisi_queen[index] = [(item.charCodeAt(0)) % 97,(8 % parseInt(item.charAt(1)))];
+    solverNode.posisi_queen[index] = [(104%(item.charCodeAt(0))),(parseInt(item.charAt(1))-1)];
 }
 
 function reStart(){
+    pieceCount = 0;
     myBoard.clear();
     lockBoard.className = ""
     startBtn.innerHTML = "Start Position";
     inputChess = new NQueenSolver(solverNode);
+    $("[id^=bR-]")[0].style.visibility="visible"
     document.getElementById("clearBtn").style.visibility = "visible";
 }
 
@@ -122,9 +147,9 @@ startBtn.onclick = function(){
                 // console.log(el.parentNode.getAttribute('data-square'))
                 solverNode.posisi_queen.push(el.parentNode.getAttribute('data-square'))
             })
-    
             solverNode.posisi_queen.forEach(getKoor);
-    
+            console.log(solverNode.posisi_queen)
+            
             window.inputChess=solverNode;
             
             inputChess.search(errorCallback, failedCallback, successCallback);
@@ -141,5 +166,7 @@ startBtn.onclick = function(){
     }  
 };
 
-$('#clearBtn').on('click', myBoard.clear)
-
+clearBtn.onclick = function(){
+    myBoard.clear
+    reStart()
+}
