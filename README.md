@@ -10,10 +10,10 @@ The end product of this group project is deployed to Vercel at the link below. P
 
 <img src="assets/ss.png" width="800">
 
-<h3>Sampe Input</h3>
+<h3>Sample Input</h3>
 <img src="assets/ss-input.png" width="300">
 
-<h3>Sampe Output</h3>
+<h3>Sample Output</h3>
 <img src="assets/ss-output.png" width="300">
 
 ## Contributors
