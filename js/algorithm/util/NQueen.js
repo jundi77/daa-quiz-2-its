@@ -10,12 +10,12 @@
 
     let posisi_queen = JSON.parse(JSON.stringify(node.posisi_queen))
     let old = [...posisi_queen[index]]
-    let maxId = 4 * node.panjang
+    let maxId = 8 * node.panjang
 
     for (; id < maxId; ++id) {
 
-        let move = id % 4
-        let diff = parseInt(id / 4) + 1
+        let move = id % 8
+        let diff = parseInt(id / 8) + 1
 
         /**
          * Do movement
