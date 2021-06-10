@@ -6,6 +6,8 @@
  */
  function _getChildNodeFn(node, id, index) {
 
+    if (node.posisi_queen.length > node.panjang) return false
+
     if (index >= node.posisi_queen.length) return false
 
     let posisi_queen = JSON.parse(JSON.stringify(node.posisi_queen))
