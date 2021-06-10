@@ -4,14 +4,27 @@
 
 import NQueenSolver from './NQueenSolver.js'
 let test = new NQueenSolver({
-    panjang: 5,
-    lebar: 5,
+    panjang: 8,
+    lebar: 8,
     posisi_queen: [
         [0,0],
-        [1,1]
+        [1,0],
+        [2,0],
+        [3,0],
+        [4,0],
+        [5,0],
+        [6,0],
+        // [1,1],
+        // [1,1],
+        // [1,1],
+        // [1,1],
+        // [1,1],
+        // [1,1],
         // ...
     ]
 })
+
+window.test = test
 
 function errorCallback(err) {
     alert(err.message)
@@ -26,7 +39,7 @@ function failedCallback() {
 }
 
 test.search(errorCallback, failedCallback, successCallback) // contoh cara panggil, fungsi ini async
-test.stop() // contoh cara stop
+// test.stop() // contoh cara stop
 
 /**
  * Available methods:
