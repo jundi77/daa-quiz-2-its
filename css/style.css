@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-/*  background-color: salmon;*/
+  /*  background-color: salmon;*/
   margin-top: 20px;
 }
 
@@ -34,7 +34,7 @@ body {
 
 .left {
   width: 40%;
-  /*background-color: red;*/ 
+  /*background-color: red;*/
 }
 
 .right {
@@ -51,7 +51,7 @@ body {
   margin-top: 10px;
 }
 
- .title {
+.title {
   font-size: 30px;
   margin-top: 10px;
 }
@@ -77,6 +77,38 @@ button {
   font-size: 25px;
   border: none;
   cursor: pointer;
+}
+
+#myBoard {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#lockBoard {
+  position: absolute;
+  width: 400px;
+  background: aquamarine;
+  z-index: 9; /*! margin: 30px; */
+  background: #ffffff;
+  top: 1; /*! display: none; */
+  opacity: 0%;
+
+  height: 0px;
+}
+
+#lockBoard.Freeze {
+  position: absolute;
+  width: 400px;
+  background: aquamarine;
+  z-index: 9; /*! margin: 30px; */
+  background: #ffffff;
+  top: 1; /*! display: none; */
+  opacity: 0%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height: 494px;
 }
 
 #startBtn {
