@@ -1,8 +1,11 @@
 import NQueenSolver from './NQueenSolver.js'
 /*
 Modification at connector.js:
-    - callBack(s) give alert() as result
+    - at timer in sec for algo speed
 */
+var timeStart;
+var timeStop;
+
 var startBtn = document.getElementById("startBtn");
 var lockBoard = document.getElementById("lockBoard");
 
@@ -39,19 +42,22 @@ pieceColor.forEach(function(item){
 )
 
 function errorCallback(err) {
-    alert(err.message)
+    timeStop = Math.floor(Date.now() / 1000);
+    alert(err.message+ " at "+ (timeStop-timeStart)+"sec")
     reStart()
 }
 
 function successCallback(node) {
+    timeStop = Math.floor(Date.now() / 1000);
     reStart()
     node.posisi_queen = setMove(...node.posisi_queen)
     myBoard.position(node.posisi_queen)
-    alert(JSON.stringify(node))
+    alert(JSON.stringify(node)+" for "+ (timeStop-timeStart)+"sec")
 }
 
 function failedCallback() {
-    alert("Algo fail")
+    timeStop = Math.floor(Date.now() / 1000);
+    alert("Algo fail, running for "+ (timeStop-timeStart)+"sec")
     reStart()
 }
 
@@ -97,6 +103,8 @@ function reStart(){
 
 startBtn.onclick = function(){
 
+    timeStart = Math.floor(Date.now() / 1000);
+
     // uncoment bellow & "var sg" to "how to use setMove()""
     // sg = setMove(...sg)
     // myBoard.position(sg)  
@@ -104,8 +112,10 @@ startBtn.onclick = function(){
     document.getElementById("clearBtn").style.visibility = "hidden";
 
     if(lockBoard.className == ""){
+
         lockBoard.className = "Freeze";
         startBtn.innerHTML = "Stop";   
+
         if(inputChess._haveDoneSearched == false){
             solverNode.posisi_queen = []
             document.querySelector('.board-b72b1').querySelectorAll('.piece-417db').forEach(el => {
@@ -123,9 +133,11 @@ startBtn.onclick = function(){
     }
     //else if the algo took longertime to finish
     else if(lockBoard.className == "Freeze"){
+        timeStop = Math.floor(Date.now() / 1000);
         inputChess.stop();
         inputChess = new NQueenSolver(solverNode);
         reStart();
+        alert("Algorithm Timeout "+ (timeStop-timeStart)+"sec")
     }  
 };
 
