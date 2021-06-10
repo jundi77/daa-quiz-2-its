@@ -1,5 +1,9 @@
 import NQueenSolver from './NQueenSolver.js'
-
+/*
+New at connector.js:
+    - setMove, to get string position
+    - at succesCallBack added step for conversion (node) & showing result to the myBoard
+*/
 var startBtn = document.getElementById("startBtn");
 var lockBoard = document.getElementById("lockBoard");
 
@@ -43,6 +47,14 @@ function errorCallback(err) {
 function successCallback(node) {
     alert(JSON.stringify(node))
     reStart()
+    
+    node.posisi_queen = node.posisi_queen.forEach(function(item,index){
+        node.posisi_queen[index] = item.join('')
+        node.posisi_queen[index] = setMove(node.posisi_queen[index])
+    })
+    node.posisi_queen = node.posisi_queen.join('/')
+
+    myBoard.position(uji)
 }
 
 function failedCallback() {
@@ -50,7 +62,21 @@ function failedCallback() {
     reStart()
 }
 
-document.getElementsByClassName
+function setMove(item){
+    if(item.charAt(1)=='0'){
+        item="n"// cat N
+        item=item.concat("7")// cat 7
+    }else if(item.charAt(1)=='0'||item.charAt(1)=='7'){
+        item=item.charAt(1)
+        item=item.concat("N")// cat N
+        item=item.concat((7-parseInt(item.charAt(1))).toString())
+    }else{
+        item="7"// cat 7
+        item=item.concat("n")// cat N
+    }
+    return item
+}
+
 function getKoor(item,index){
     solverNode.posisi_queen[index] = [(item.charCodeAt(0)) % 97,(8 % parseInt(item.charAt(1)))];
 }
@@ -64,8 +90,7 @@ function reStart(){
 }
 
 startBtn.onclick = function(){
-    console.log(test)
-    document.getElementById("clearBtn").style.visibility = "hidden";
+     document.getElementById("clearBtn").style.visibility = "hidden";
 
     if(lockBoard.className == ""){
         lockBoard.className = "Freeze";
